@@ -87,7 +87,8 @@ namespace SkalProj_Datastrukturer_Minne
             List<string> theList = new List<string>();
             while (true)
             {
-                Console.WriteLine("Enter '+' to add or '-' to remove from the list (Or type exit to go back to the menu) :");
+                Console.WriteLine("Enter '+' to add or '-' to remove from the list" +
+                                "(Or type exit to go back to the menu) :");
                 string input = Console.ReadLine();
 
                 if (input.Length == 0) // Check if input is empty
@@ -134,11 +135,55 @@ namespace SkalProj_Datastrukturer_Minne
              * Create a switch with cases to enqueue items or dequeue items
              * Make sure to look at the queue after Enqueueing and Dequeueing to see how it behaves
             */
-        }
 
-        /// <summary>
-        /// Examines the datastructure Stack
-        /// </summary>
+
+            Queue<string> theQueue = new Queue<string>();
+            while (true)
+            {
+                Console.WriteLine("Enter 'e' to enqueue or 'd' to dequeue from the queue (Or type exit to go back to the menu) :");
+                string input = Console.ReadLine();
+
+                if (input.ToLower().Length == 0)
+                    continue;
+
+                char nav = input[0];
+                string value = input.Substring(1).Trim();
+
+                switch (nav)
+                {
+                    case 'e':
+                        theQueue.Enqueue(value);
+                        Console.WriteLine($"Enqueued '{value}' to the queue");
+                        break;
+                    case 'd':
+                        if (theQueue.Count > 0)
+                            Console.WriteLine($"Dequeued '{theQueue.Dequeue()}' from the queue");
+                        else
+                            Console.WriteLine("Queue is empty");
+                        break;
+                    default:
+                        Console.WriteLine("Please use only 'e' or 'd' ");
+                        break;
+                }
+
+                Console.WriteLine($"Current count: {theQueue.Count}");
+                Console.WriteLine("Current items in the queue :");
+                foreach (var item in theQueue)
+                {
+                    Console.WriteLine(item);
+                }
+
+
+
+                if (input.ToLower() == "exit")
+
+                    break;
+
+            }
+        }
+            /// <summary>
+            /// Examines the datastructure Stack
+            /// </summary>
         static void ExamineStack()
         {
             /*
