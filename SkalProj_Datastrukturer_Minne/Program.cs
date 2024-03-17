@@ -119,9 +119,9 @@ namespace SkalProj_Datastrukturer_Minne
                 // To exit the loop if the user inputs any other key
                 if (input.ToLower() == "exit")
                     break;
-                
 
-                
+
+
             }
         }
 
@@ -181,9 +181,9 @@ namespace SkalProj_Datastrukturer_Minne
 
             }
         }
-            /// <summary>
-            /// Examines the datastructure Stack
-            /// </summary>
+        /// <summary>
+        /// Examines the datastructure Stack
+        /// </summary>
         static void ExamineStack()
         {
             /*
@@ -191,6 +191,46 @@ namespace SkalProj_Datastrukturer_Minne
              * Create a switch with cases to push or pop items
              * Make sure to look at the stack after pushing and and poping to see how it behaves
             */
+
+            Stack<string> theStack = new Stack<string>();
+            while (true)
+            {
+                Console.WriteLine("Enter 'p' to push or 'o' to pop from the stack (Or type exit to go back to the menu) :");
+                string input = Console.ReadLine();
+
+                if (input.ToUpper().Length == 0)
+                    continue;
+
+                char nav = input[0];
+                string value = input.Substring(1).Trim();
+
+                switch (nav)
+                {
+                    case 'p':
+                        theStack.Push(value);
+                        Console.WriteLine($"Pushed '{value}' to the stack");
+                        break;
+                    case 'o':
+                        if (theStack.Count > 0)
+                            Console.WriteLine($"Popped '{theStack.Pop()}' from the stack");
+                        else
+                            Console.WriteLine("Stack is empty");
+                        break;
+                    default:
+                        Console.WriteLine("Please use only 'p' or 'o' ");
+                        break;
+                }
+
+                Console.WriteLine($"Current count: {theStack.Count}");
+                Console.WriteLine("Current items in the list :");
+                foreach (var item in theStack)
+                {
+                    Console.WriteLine(item);
+                }
+
+                if (input.ToLower() == "exit")
+                    break;
+            }
         }
 
         static void CheckParanthesis()
