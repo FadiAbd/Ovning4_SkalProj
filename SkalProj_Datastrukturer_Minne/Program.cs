@@ -84,6 +84,34 @@ namespace SkalProj_Datastrukturer_Minne
             //switch(nav){...}
 
 
+            /*Frågor
+             *****************************************************************************************************************************
+             2. När ökar listans kapacitet?
+            
+                Svar: Kapaciteten ökar när man lägger till items som överstiger kapacitetens gräns
+            
+             3. Med hur mycket ökar kapaciteten?
+            
+                Svar: Kapaciteten fördublas när man överstiger gränsen
+            
+             4. varför ökar inte listans kapacitet i samma takt som elements läggs till? 
+            
+                Svar: . När du lägger till element i listan och den underliggande arrayen når sin kapacitet,
+                        behöver listan alloka en ny array med större kapacitet och kopiera alla befintliga element till den.
+                        Denna process medför en prestandaöverhead, så kapaciteten ökas inte med varje elementtillägg.
+            
+             5. Minskar Kapaciteten när element tas bort från listan?
+            
+                Svar: Nej, kapaciteten behåller sin ökad storlek även när man tar bort element
+            
+             6. När är det fördelaktigt att använda en egendefinerad array istället för en lista?
+            
+                Svar: man kan använda en array istället för en lista om man vet i förväg hur många element den kommer att hålla,
+                      vilket kan hjälpa till att undvika onödiga reallokeringar.
+            *************************************************************************************************************************************/
+
+
+
             List<string> theList = new List<string>();
             while (true)
             {
@@ -241,6 +269,47 @@ namespace SkalProj_Datastrukturer_Minne
              * Example of incorrect: (()]), [), {[()}],  List<int> list = new List<int>() { 1, 2, 3, 4 );
              */
 
+            Console.WriteLine("Enter a string to check the balance of parentheses:");
+            string input = Console.ReadLine();
+
+            if (IsBalanced(input))
+            {
+                Console.WriteLine("The parentheses are balanced.");
+            }
+            else
+            {
+                Console.WriteLine("The parentheses are not balanced.");
+            }
+
+        }
+
+        static bool IsBalanced(string input)
+        {
+            Stack<char> stack = new Stack<char>();
+
+            foreach (char c in input)
+            {
+                if (c == '(' || c == '[' || c == '{')
+                {
+                    stack.Push(c);
+                }
+                else if (c == ')' || c == ']' || c == '}')
+                {
+                    if (stack.Count == 0)
+                    {
+                        return false; // There is no opening parenthesis for this closing one
+                    }
+
+                    char top = stack.Pop();
+
+                    if ((c == ')' && top != '(') || (c == ']' && top != '[') || (c == '}' && top != '{'))
+                    {
+                        return false; // Mismatched parentheses
+                    }
+                }
+            }
+
+            return stack.Count == 0; // If stack is empty, all parentheses were balanced
         }
 
     }
