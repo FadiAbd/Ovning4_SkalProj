@@ -52,9 +52,9 @@ namespace SkalProj_Datastrukturer_Minne
                     case '5':
                         ReverseText();
                         break;
-                    //case '6':
-                    //    FibonacciRecursive();
-                    //    break;
+                    case '6':
+                        FibonacciRecursive();
+                        break;
                     //case '7':
                     //    FibonacciIterative();
                     //    break;
@@ -62,7 +62,7 @@ namespace SkalProj_Datastrukturer_Minne
                         Environment.Exit(0);
                         break;
                     default:
-                        Console.WriteLine("Please enter some valid input (0, 1, 2, 3, 4)");
+                        Console.WriteLine("Please enter some valid input (0, 1, 2, 3, 4, 5, 6, 7)");
                         break;
                 }
             }
@@ -346,6 +346,21 @@ namespace SkalProj_Datastrukturer_Minne
 
             return new string(reversedChars);
 
+        }
+
+        static void FibonacciRecursive()
+        {
+            Console.WriteLine("Enter the number (n) to calculate the nth Fibonacci number:");
+            int n = int.Parse(Console.ReadLine()!);
+            int result = Fibonacci(n);
+            Console.WriteLine($"The {n}th Fibonacci number is: {result}");
+        }
+
+        static int Fibonacci(int n)
+        {
+            if (n <= 1)
+                return n;
+            return Fibonacci(n - 1) + Fibonacci(n - 2);
         }
 
     }
