@@ -16,7 +16,7 @@ namespace SkalProj_Datastrukturer_Minne
 
             while (true)
             {
-                Console.WriteLine("Please navigate through the menu by inputting the number \n(1, 2, 3 ,4, 0) of your choice"
+                Console.WriteLine("Please navigate through the menu by inputting the number \n(1, 2, 3 , 4, 5, 6, 7, 0) of your choice"
                     + "\n1. Examine a List"
                     + "\n2. Examine a Queue"
                     + "\n3. Examine a Stack"
@@ -126,7 +126,7 @@ namespace SkalProj_Datastrukturer_Minne
                 Console.WriteLine("Enter '+' to add or '-' to remove from the list" +
                                 "(Or type exit to go back to the menu) :");
                 string input = Console.ReadLine();
-
+               
                 if (input.Length == 0) // Check if input is empty
                     continue;
 
@@ -179,7 +179,7 @@ namespace SkalProj_Datastrukturer_Minne
                 Console.WriteLine("Enter 'e' to enqueue or 'd' to dequeue from the queue (Or type exit to go back to the menu) :");
                 string input = Console.ReadLine();
 
-                if (input.ToLower().Length == 0)
+                if (input.Length == 0)
                     continue;
 
                 char nav = input[0];
@@ -234,7 +234,7 @@ namespace SkalProj_Datastrukturer_Minne
                 Console.WriteLine("Enter 'p' to push or 'o' to pop from the stack (Or type exit to go back to the menu) :");
                 string input = Console.ReadLine();
 
-                if (input.ToUpper().Length == 0)
+                if (input.Length == 0)
                     continue;
 
                 char nav = input[0];
@@ -463,6 +463,7 @@ namespace SkalProj_Datastrukturer_Minne
     Value types lagras direkt där variabeln är definierad medan reference types lagrar en referens
     till platsen där datan finns.
     När en värde typ kopieras, kopieras själva värdet medan när en referenstyp kopieras, kopieras bara referensen.
+
     --------------------------------------------------------------------------------------------------------------
     Fråga 3.Följande metoder generar olika svar . den första returnerar 3, den andra returnerar 4,varför?
 
@@ -471,6 +472,19 @@ namespace SkalProj_Datastrukturer_Minne
     I den första metoden hanterar du primitiva typer (int), så tilldelningen av y påverkar inte x.
     I den andra metoden hanterar du dock referenstyper (MyInt), så när du tilldelar y = x,
     pekar du faktiskt både x och y på samma objekt, och att ändra y.MyValue ändrar också x.MyValue.
+
+    ----------------------------------------------------------------------------------------------------------------
+    Fråga: Utgå från era nyvunna kunskaper om iteration rekursion och minneshantering.vilken av de är mest minnesvänlig och varför?
+
+    Svar : 
+
+    iteration är generellt mer minnesvänlig än rekursion på grund av dess förutsägbara minnesanvändning och effektiva loopstrukturer
+    me effektiva metoder för minneshantering är avgörande oavsett om du använder iteration eller rekursion 
+    för att säkerställa optimal minnesanvändning i dina program.
+
+
+
+
      */
 }
 
