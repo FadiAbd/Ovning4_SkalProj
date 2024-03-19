@@ -21,6 +21,9 @@ namespace SkalProj_Datastrukturer_Minne
                     + "\n2. Examine a Queue"
                     + "\n3. Examine a Stack"
                     + "\n4. CheckParenthesis"
+                    + "\n5. Reverse Text"
+                    + "\n6. Fibonacci Recursive"
+                    + "\n7. Fibonacci Iterative"
                     + "\n0. Exit the application");
                 char input = ' '; //Creates the character input to be used with the switch-case below.
                 try
@@ -46,10 +49,15 @@ namespace SkalProj_Datastrukturer_Minne
                     case '4':
                         CheckParanthesis();
                         break;
-                    /*
-                     * Extend the menu to include the recursive 
-                     * and iterative exercises.
-                     */
+                    case '5':
+                        ReverseText();
+                        break;
+                    //case '6':
+                    //    FibonacciRecursive();
+                    //    break;
+                    //case '7':
+                    //    FibonacciIterative();
+                    //    break;
                     case '0':
                         Environment.Exit(0);
                         break;
@@ -310,6 +318,34 @@ namespace SkalProj_Datastrukturer_Minne
             }
 
             return stack.Count == 0; // If stack is empty, all parentheses were balanced
+        }
+
+        static void ReverseText()
+        {
+            Console.WriteLine("Enter a string to reverse:");
+            string input = Console.ReadLine();
+            string reversed = ReverseText(input);
+            Console.WriteLine("Reversed string:");
+            Console.WriteLine(reversed);
+        }
+
+        static string ReverseText(string UserInput)
+        {
+            Stack<char> stack = new Stack<char>();
+            foreach (char c in UserInput)
+            {
+                stack.Push(c);
+            }
+
+            char[] reversedChars = new char[UserInput.Length];
+            int index = 0;
+            while (stack.Count > 0)
+            {
+                reversedChars[index++] = stack.Pop();
+            }
+
+            return new string(reversedChars);
+
         }
 
     }
