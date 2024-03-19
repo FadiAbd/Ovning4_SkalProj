@@ -55,9 +55,9 @@ namespace SkalProj_Datastrukturer_Minne
                     case '6':
                         FibonacciRecursive();
                         break;
-                    //case '7':
-                    //    FibonacciIterative();
-                    //    break;
+                    case '7':
+                        FibonacciIterative();
+                        break;
                     case '0':
                         Environment.Exit(0);
                         break;
@@ -361,6 +361,35 @@ namespace SkalProj_Datastrukturer_Minne
             if (n <= 1)
                 return n;
             return Fibonacci(n - 1) + Fibonacci(n - 2);
+        }
+
+        static void FibonacciIterative()
+        {
+            Console.WriteLine("Enter the number (n) to calculate the nth Fibonacci number:");
+            int n = int.Parse(Console.ReadLine()!);
+            int fib1 = 0;
+            int fib2 = 1;
+            int fib = 0;
+
+            if (n == 0)
+            {
+                Console.WriteLine($"The {n}th Fibonacci number is: {fib1}");
+                return;
+            }
+            if (n == 1)
+            {
+                Console.WriteLine($"The {n}th Fibonacci number is: {fib2}");
+                return;
+            }
+
+            for (int i = 2; i <= n; i++)
+            {
+                fib = fib1 + fib2;
+                fib1 = fib2;
+                fib2 = fib;
+            }
+
+            Console.WriteLine($"The {n}th Fibonacci number is: {fib}");
         }
 
     }
